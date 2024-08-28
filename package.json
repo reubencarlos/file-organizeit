@@ -1,0 +1,80 @@
+{
+  "name": "file-organizeit",
+  "version": "1.0.0",
+  "description": "File OrganizeIt! is an Electron-based app that scans, organizes, and sorts files by date, ensuring no duplicates in the destination folder.",
+  "main": "dist/main.js",
+  "scripts": {
+    "start": "npm run build && electron .",
+    "dev": "webpack --config webpack.config.js && electron .",
+    "build": "webpack --config webpack.config.js --progress",
+    "build:win": "npm run build && electron-builder --win",
+    "build:mac": "npm run build && electron-builder --mac",
+    "build:linux": "npm run build && electron-builder --linux",
+    "build:all": "npm run build && electron-builder -mwl",
+    "clean": "rimraf dist build",
+    "rebuild": "electron-rebuild",
+    "pack": "electron-builder --dir",
+    "dist": "electron-builder",
+    "postinstall": "electron-builder install-app-deps",
+    "test": "jest"
+  },
+  "build": {
+    "appId": "com.cruzconnect.file-organizeit",
+    "mac": {
+      "category": "public.app-category.utilities"
+    },
+    "win": {
+      "target": [
+        "nsis",
+        "portable"
+      ]
+    },
+    "linux": {
+      "target": [
+        "AppImage",
+        "deb"
+      ]
+    },
+    "files": [
+      "dist/**/*",
+      "package.json"
+    ],
+    "directories": {
+      "output": "build"
+    }
+  },
+  "author": "Reuben Carlos Cruz",
+  "license": "MIT",
+  "devDependencies": {
+    "@electron/rebuild": "^3.6.0",
+    "@types/fs-extra": "^11.0.4",
+    "@types/jest": "^29.5.12",
+    "@types/node": "^22.5.1",
+    "@types/webpack-env": "^1.18.5",
+    "@vue/compiler-sfc": "^3.4.38",
+    "copy-webpack-plugin": "^12.0.2",
+    "css-loader": "^7.1.2",
+    "electron": "^32.0.1",
+    "electron-builder": "^24.13.3",
+    "html-webpack-plugin": "^5.6.0",
+    "jest": "^29.7.0",
+    "rimraf": "^6.0.1",
+    "sass": "^1.77.8",
+    "sass-loader": "^16.0.1",
+    "style-loader": "^4.0.0",
+    "ts-jest": "^29.2.5",
+    "ts-loader": "^9.5.1",
+    "typescript": "^5.5.4",
+    "vue-loader": "^17.4.2",
+    "webpack": "^5.94.0",
+    "webpack-cli": "^5.1.4"
+  },
+  "dependencies": {
+    "@mdi/font": "^7.4.47",
+    "date-fns": "^3.6.0",
+    "electron-serve": "^2.1.0",
+    "fs-extra": "^11.2.0",
+    "vue": "^3.4.38",
+    "vuetify": "^3.7.1"
+  }
+}
